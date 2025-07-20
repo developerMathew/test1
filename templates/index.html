@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YOLOv5 Object Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Fixed Header -->
+    <div class="fixed-header">
+        <h1 class="head">
+            SOLUTION FOR DETECTION AND CLASSIFICATION OF OBJECTS OF INTEREST IN WIDE SWATH SAR/EO IMAGERY AND MULTI-SENSOR DATA CORRELATION
+        </h1>
+    </div>
+
+    <!-- Main Layout with margin to avoid header overlap -->
+    <div class="upload-div">
+
+        <!-- Upload Section -->
+        <div class="div-1">
+            <h2 class="div1-head">Upload Image for Object Detection</h2>
+            <form method="POST" enctype="multipart/form-data" class="">
+                <div class="image">
+                    <label class="block font-medium">Select Image:</label>
+                    <input type="file" name="file" required class="">
+                </div>
+
+                <div class="confidence">
+                    <label class="block font-medium">Confidence Threshold (0.1 - 1.0):</label>
+                    <input type="range" name="threshold" min="0.1" max="1.0" value="0.25" step="0.05" oninput="this.nextElementSibling.value = this.value" class="w-full">
+                    <output class="">0.25</output>
+                </div>
+
+                <div class="left-btn">
+                    <input type="submit" value="Upload" class="">
+                </div>
+            </form>
+        </div>
+
+        <!-- Detection Result Section -->
+        <div class="div-2">
+            {% if result_path %}
+                <h3 class="div2-head">Detection Result:</h3>
+                <img src="{{ url_for('static', filename=result_path) }}" class="">
+
+                {% if detections %}
+                    <h4 class="div2-head">Detected Objects:</h4>
+                    <div class="">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-row">
+                                    <th class="child">Class</th>
+                                    <th class="child">Confidence</th>
+                                    <th class="child">X</th>
+                                    <th class="child">Y</th>
+                                    <th class="child">Width</th>
+                                    <th class="child">Height</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for d in detections %}
+                                <tr>
+                                    <td class="child">{{ d.class }}</td>
+                                    <td class="child">{{ d.confidence }}</td>
+                                    <td class="child">{{ d.x }}</td>
+                                    <td class="child">{{ d.y }}</td>
+                                    <td class="child">{{ d.w }}</td>
+                                    <td class="child">{{ d.h }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

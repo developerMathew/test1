@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("/static/images/ai.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+
+.fixed-header {
+    background-image: linear-gradient(to right, red, blue);
+    text-align: center;
+}
+
+.fixed-header .head {
+    font-size: 20px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 30px;
+}
+
+/* upload div */
+.upload-div {
+    display: flex;
+    gap: 20px;
+    padding: 30px;
+    border: #fff;
+}
+
+.div-1 {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px;
+    border: 5px solid green;
+}
+
+.div-2 {
+    background-color: #fff;
+    width: 100%;
+    padding: 30px;
+    border: 5px solid green;
+}
+
+.div1-head {
+    font-size: 35px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.image {
+    font-size: 30px;
+}
+
+.confidence {
+    font-size: 25px;
+    margin: 30px 0 30px;
+}
+
+.left-btn {
+    width: 100%;
+    text-align: center;
+}
+
+.left-btn input {
+    background-color: teal;
+    color: #fff;
+    padding: 20px 80px;
+    border: none;
+    outline: none;
+}
+
+.table {
+    border: solid;
+}
+
+.table-row {
+    border: solid;
+}
+
+.child {
+    border: solid;
+    padding: 10px;
+    font-size: 24px;
+}
+
+.div2-head {
+    font-size: 30px;
+}
+
+@media(max-width:1000px) {
+    .upload-div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .div-1 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .div-2 {
+        width: 100%;
+        height: 100%;
+    }
+}
